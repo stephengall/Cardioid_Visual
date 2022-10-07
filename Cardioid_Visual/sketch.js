@@ -3,7 +3,7 @@ var times = 2;
 var radius = 300;
 var points = [];
 var animating = false;
-var up = true;
+var up = true; // used to track position in animation
 function setup() {
   createCanvas(800, 700);
   slider = createSlider(0, 5, 0, 0.01);
@@ -20,8 +20,10 @@ function draw() {
   background(51);
   for(var i = 0; i < divisions; i++){
     var multiplier = i * times % divisions;
+    //converting from cartesian to polar coordinates for current index
     var x1 = radius * cos(TWO_PI / divisions * i);
     var y1 = radius * sin(TWO_PI / divisions * i);
+    //converting from cartesian to polar coordinates for result of multiplication
     var x2 = radius * cos(TWO_PI / divisions * multiplier);
     var y2 = radius * sin(TWO_PI / divisions * multiplier);
     noStroke()
@@ -31,6 +33,7 @@ function draw() {
     fill(255, 100);
     if(divisions <= 120) text(i, (radius + 30) * cos(TWO_PI / divisions * i), (radius + 30) * sin(TWO_PI / divisions * i));
     stroke(255, 50);
+    //drawing line from index to it's result after multiplication
     line(x1, y1, x2, y2)
   }
   pop();
@@ -41,6 +44,7 @@ function draw() {
   fill(255, 100);
   text("Divisions", 20, 70);
   text(divisions, 160, 70);
+  //increments times variable to create animation
   if(animating){
     if(up){
       times+=0.005;
@@ -51,7 +55,6 @@ function draw() {
       if(times <= 0)
         up = true;
     }
-    
   }else{
     times = slider.value();
   }
