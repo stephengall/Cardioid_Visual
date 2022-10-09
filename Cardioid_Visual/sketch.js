@@ -5,7 +5,7 @@ var points = [];
 var animating = false;
 var up = true; // used to track position in animation
 function setup() {
-  createCanvas(800, 700);
+  createCanvas(1440, 810);
   slider = createSlider(0, 5, 0, 0.01);
   slider2 = createSlider(8, 250, 0, 1);
   checkbox = createCheckbox('Animate', false);
@@ -20,10 +20,10 @@ function draw() {
   background(51);
   for(var i = 0; i < divisions; i++){
     var multiplier = i * times % divisions;
-    //converting from cartesian to polar coordinates for current index
+    //converting from polar to cartesian coordinates for current index
     var x1 = radius * cos(TWO_PI / divisions * i);
     var y1 = radius * sin(TWO_PI / divisions * i);
-    //converting from cartesian to polar coordinates for result of multiplication
+    //converting from polar to cartesian coordinates for result of multiplication
     var x2 = radius * cos(TWO_PI / divisions * multiplier);
     var y2 = radius * sin(TWO_PI / divisions * multiplier);
     noStroke()
@@ -31,6 +31,7 @@ function draw() {
     circle(x1, y1, 8)
     textSize(12);
     fill(255, 100);
+    //hides point labels when num of divisions get too high
     if(divisions <= 120) text(i, (radius + 30) * cos(TWO_PI / divisions * i), (radius + 30) * sin(TWO_PI / divisions * i));
     stroke(255, 50);
     //drawing line from index to it's result after multiplication
