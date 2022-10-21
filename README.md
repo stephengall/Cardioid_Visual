@@ -5,6 +5,6 @@
 
 # The Algorithm
 - A circle has points evenly placed around its circumference and assigned a number ranging from 0 up to the number of divisions.
-- For each point, it's index is multiplied by a multiplier.
+- For each point, its index is multiplied by a multiplier.
 - A line is drawn from the current index to the index of the result.
 - This algorithm creates patterns that become more distinct as the number of divisions increase.
